@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/wshafer/expressive-symfony-router.svg?branch=master)](https://travis-ci.org/wshafer/expressive-symfony-router)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/wshafer/expressive-symfony-router/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/wshafer/expressive-symfony-router/?branch=master)
-[![codecov](https://codecov.io/gh/wshafer/expressive-symfony-router/branch/master/graph/badge.svg)](https://codecov.io/gh/wshafer/expressive-symfony-router)
+[![codecov](https://codecov.io/gh/wshafer/mezzio-symfony-router/branch/master/graph/badge.svg)](https://codecov.io/gh/wshafer/mezzio-symfony-router)
 
 Provides [Symfony Route](https://symfony.com/doc/current/routing.html) integration for
 [Mezzio](https://github.com/mezzio/mezzio).
