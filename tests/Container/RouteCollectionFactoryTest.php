@@ -1,11 +1,11 @@
 <?php
 
-namespace WShafer\Expressive\Symfony\Router\Test\Container;
+namespace WShafer\Mezzio\Symfony\Router\Test\Container;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Routing\RouteCollection;
-use WShafer\Expressive\Symfony\Router\Container\RouteCollectionFactory;
+use WShafer\Mezzio\Symfony\Router\Container\RouteCollectionFactory;
 
 class RouteCollectionFactoryTest extends TestCase
 {

@@ -2,8 +2,11 @@
 
 declare(strict_types=1);
 
-namespace WShafer\Expressive\Symfony\Router;
+namespace WShafer\Mezzio\Symfony\Router;
 
+use Mezzio\Router\Route;
+use Mezzio\Router\RouteResult;
+use Mezzio\Router\RouterInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
@@ -11,10 +14,7 @@ use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Route as SymfonyRoute;
-use WShafer\Expressive\Symfony\Router\Cache\Cache;
-use Zend\Expressive\Router\Route;
-use Zend\Expressive\Router\RouteResult;
-use Zend\Expressive\Router\RouterInterface;
+use WShafer\Mezzio\Symfony\Router\Cache\Cache;
 
 /**
  * @SuppressWarnings(PHPMD.LongVariable)

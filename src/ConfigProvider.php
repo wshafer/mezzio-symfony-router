@@ -2,35 +2,35 @@
 
 declare(strict_types=1);
 
-namespace WShafer\Expressive\Symfony\Router;
+namespace WShafer\Mezzio\Symfony\Router;
 
+use Mezzio\Router\RouterInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
-use WShafer\Expressive\Symfony\Router\Cache\Cache;
-use WShafer\Expressive\Symfony\Router\Cache\CacheFactory;
-use WShafer\Expressive\Symfony\Router\Container\HttpFoundationFactoryFactory;
-use WShafer\Expressive\Symfony\Router\Container\RequestContextFactory;
-use WShafer\Expressive\Symfony\Router\Container\RouteCollectionFactory;
-use WShafer\Expressive\Symfony\Router\Container\UrlGeneratorFactory;
-use WShafer\Expressive\Symfony\Router\Container\UrlMatcherFactory;
-use Zend\Expressive\Router\RouterInterface;
+use WShafer\Mezzio\Symfony\Router\Cache\Cache;
+use WShafer\Mezzio\Symfony\Router\Cache\CacheFactory;
+use WShafer\Mezzio\Symfony\Router\Container\HttpFoundationFactoryFactory;
+use WShafer\Mezzio\Symfony\Router\Container\RequestContextFactory;
+use WShafer\Mezzio\Symfony\Router\Container\RouteCollectionFactory;
+use WShafer\Mezzio\Symfony\Router\Container\UrlGeneratorFactory;
+use WShafer\Mezzio\Symfony\Router\Container\UrlMatcherFactory;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class ConfigProvider
 {
-    public function __invoke() : array
+    public function __invoke(): array
     {
         return [
             'dependencies' => $this->getDependencies(),
         ];
     }
 
-    public function getDependencies() : array
+    public function getDependencies(): array
     {
         return [
             'aliases' => [

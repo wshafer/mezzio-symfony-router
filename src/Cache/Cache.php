@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace WShafer\Expressive\Symfony\Router\Cache;
+namespace WShafer\Mezzio\Symfony\Router\Cache;
 
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
-use WShafer\Expressive\Symfony\Router\Exception\InvalidCacheDirectoryException;
-use WShafer\Expressive\Symfony\Router\Exception\InvalidCacheException;
-use WShafer\Expressive\Symfony\Router\Exception\WriteCacheException;
+use WShafer\Mezzio\Symfony\Router\Exception\InvalidCacheDirectoryException;
+use WShafer\Mezzio\Symfony\Router\Exception\InvalidCacheException;
+use WShafer\Mezzio\Symfony\Router\Exception\WriteCacheException;
 
 /**
  * @SuppressWarnings(PHPMD.LongVariable)
@@ -39,7 +39,10 @@ class Cache
         $this->cacheFile = $config[self::CONFIG_CACHE_FILE] ?? null;
     }
 
-    public function populateCollectionFromCache(RouteCollection $collection) : RouteCollection
+    /**
+     * @throws InvalidCacheException
+     */
+    public function populateCollectionFromCache(RouteCollection $collection): RouteCollection
     {
         if (!$this->cacheEnabled) {
             return $collection;
@@ -71,9 +74,10 @@ class Cache
         return isset($this->cache[$name]);
     }
 
-    public function writeCache() : bool
+    public function writeCache(): bool
     {
-        if (!$this->cacheEnabled
+        if (
+            !$this->cacheEnabled
             || !$this->cacheNeedsUpdates
         ) {
             return true;
@@ -102,16 +106,17 @@ class Cache
 
         // @codeCoverageIgnoreStart
         if ($bytes === false) {
-            throw new WriteCacheException('Unable to write cache file: '.$this->cacheFile);
+            throw new WriteCacheException('Unable to write cache file: ' . $this->cacheFile);
         }
         // @codeCoverageIgnoreEnd
 
         return true;
     }
 
-    public function invalidateCacheFile() : void
+    public function invalidateCacheFile(): void
     {
-        if (!$this->cacheEnabled
+        if (
+            !$this->cacheEnabled
             || empty($this->cacheFile)
             || !is_file($this->cacheFile)
         ) {
@@ -138,7 +143,8 @@ class Cache
 
     public function fetchCache()
     {
-        if (!$this->cacheEnabled
+        if (
+            !$this->cacheEnabled
             || empty($this->cacheFile)
             || !is_file($this->cacheFile)
         ) {

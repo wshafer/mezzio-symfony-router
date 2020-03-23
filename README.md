@@ -1,12 +1,12 @@
 
-# Symfony Route Integration for Expressive
+# Symfony Route Integration for Mezzio
 
 [![Build Status](https://travis-ci.org/wshafer/expressive-symfony-router.svg?branch=master)](https://travis-ci.org/wshafer/expressive-symfony-router)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/wshafer/expressive-symfony-router/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/wshafer/expressive-symfony-router/?branch=master)
 [![codecov](https://codecov.io/gh/wshafer/expressive-symfony-router/branch/master/graph/badge.svg)](https://codecov.io/gh/wshafer/expressive-symfony-router)
 
 Provides [Symfony Route](https://symfony.com/doc/current/routing.html) integration for
-[Expressive](https://github.com/zendframework/zend-expressive).
+[Mezzio](https://github.com/mezzio/mezzio).
 
 ## Installation
 
@@ -22,7 +22,7 @@ $ composer require wshafer/expressive-symfony-router:dev-master
 ### Configuration
 
 To enable this router using the Expressive Skeleton, make sure to add
-`WShafer\Expressive\Symfony\Router\ConfigProvider::class` to your `ConfigAggregator`
+`WShafer\Mezzio\Symfony\Router\ConfigProvider::class` to your `ConfigAggregator`
 located in `config/config.php`.  In addition you'll want to remove
 your current router's config provider that was installed during setup.
 

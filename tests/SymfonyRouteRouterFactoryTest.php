@@ -1,20 +1,20 @@
 <?php
 
-namespace WShafer\Expressive\Symfony\Router\Test;
+namespace WShafer\Mezzio\Symfony\Router\Test;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RouteCollection;
-use WShafer\Expressive\Symfony\Router\Cache\Cache;
-use WShafer\Expressive\Symfony\Router\SymfonyRouteRouter;
-use WShafer\Expressive\Symfony\Router\SymfonyRouteRouterFactory;
+use WShafer\Mezzio\Symfony\Router\Cache\Cache;
+use WShafer\Mezzio\Symfony\Router\SymfonyRouteRouter;
+use WShafer\Mezzio\Symfony\Router\SymfonyRouteRouterFactory;
 
 class SymfonyRouteRouterFactoryTest extends TestCase
 {
     /**
-     * @covers \WShafer\Expressive\Symfony\Router\SymfonyRouteRouterFactory
+     * @covers \WShafer\Mezzio\Symfony\Router\SymfonyRouteRouterFactory
      */
     public function testInvoke()
     {

@@ -1,13 +1,13 @@
 <?php
 
-namespace WShafer\Expressive\Symfony\Router\Test\Container;
+namespace WShafer\Mezzio\Symfony\Router\Test\Container;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
-use WShafer\Expressive\Symfony\Router\Container\UrlGeneratorFactory;
+use WShafer\Mezzio\Symfony\Router\Container\UrlGeneratorFactory;
 
 class UrlGeneratorFactoryTest extends TestCase
 {

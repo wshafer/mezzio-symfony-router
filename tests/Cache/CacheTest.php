@@ -1,21 +1,23 @@
 <?php
 
-namespace WShafer\Expressive\Symfony\Router\Test\Cache;
+namespace WShafer\Mezzio\Symfony\Router\Test\Cache;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
-use WShafer\Expressive\Symfony\Router\Cache\Cache;
+use WShafer\Mezzio\Symfony\Router\Cache\Cache;
+use WShafer\Mezzio\Symfony\Router\Exception\InvalidCacheDirectoryException;
+use WShafer\Mezzio\Symfony\Router\Exception\InvalidCacheException;
 
 class CacheTest extends TestCase
 {
     /** @var MockObject|Route */
     protected $mockRoute;
 
-    public function setup()
+    protected function setup(): void
     {
-        $this->mockRoute =$this->getMockBuilder(Route::class)
+        $this->mockRoute = $this->getMockBuilder(Route::class)
             ->disableOriginalConstructor()
             ->getMock();
     }
@@ -96,11 +98,9 @@ class CacheTest extends TestCase
         $this->addRoute($cache);
     }
 
-    /**
-     * @expectedException \WShafer\Expressive\Symfony\Router\Exception\InvalidCacheDirectoryException
-     */
     public function testWriteCacheInvalidDir()
     {
+        $this->expectException(InvalidCacheDirectoryException::class);
         $cache = new Cache([
             Cache::CONFIG_CACHE_ENABLED => true,
             Cache::CONFIG_CACHE_FILE => '/dir/does/not/exist'
@@ -110,19 +110,17 @@ class CacheTest extends TestCase
         $cache->writeCache();
     }
 
-    /**
-     * @expectedException \WShafer\Expressive\Symfony\Router\Exception\InvalidCacheDirectoryException
-     */
     public function testWriteCacheDirNotWritable()
     {
-        $dir = sys_get_temp_dir().'/not-writable';
+        $this->expectException(InvalidCacheDirectoryException::class);
+        $dir = sys_get_temp_dir() . '/not-writable';
         @rmdir($dir);
         mkdir($dir);
         chmod($dir, 0444);
 
         $cache = new Cache([
             Cache::CONFIG_CACHE_ENABLED => true,
-            Cache::CONFIG_CACHE_FILE => $dir.'/cache.file'
+            Cache::CONFIG_CACHE_FILE => $dir . '/cache.file'
         ]);
 
         $this->addRoute($cache);
@@ -144,8 +142,8 @@ class CacheTest extends TestCase
 
     public function testWriteCacheFile()
     {
-        $dir = sys_get_temp_dir().'/cache-test';
-        $file = $dir.'/cache.file';
+        $dir = sys_get_temp_dir() . '/cache-test';
+        $file = $dir . '/cache.file';
 
         $cache = new Cache([
             Cache::CONFIG_CACHE_ENABLED => true,
@@ -160,8 +158,8 @@ class CacheTest extends TestCase
 
     public function testFetchCache()
     {
-        $dir = sys_get_temp_dir().'/cache-test';
-        $file = $dir.'/cache.file';
+        $dir = sys_get_temp_dir() . '/cache-test';
+        $file = $dir . '/cache.file';
 
         $cache = new Cache([
             Cache::CONFIG_CACHE_ENABLED => true,
@@ -179,13 +177,11 @@ class CacheTest extends TestCase
         rmdir($dir);
     }
 
-    /**
-     * @expectedException \WShafer\Expressive\Symfony\Router\Exception\InvalidCacheException
-     */
     public function testFetchCacheEmptyFile()
     {
-        $dir = sys_get_temp_dir().'/cache-test';
-        $file = $dir.'/cache.file';
+        $this->expectException(InvalidCacheException::class);
+        $dir = sys_get_temp_dir() . '/cache-test';
+        $file = $dir . '/cache.file';
 
         @unlink($file);
         @rmdir($dir);
@@ -205,8 +201,8 @@ class CacheTest extends TestCase
 
     public function testInvalidateCacheNoConfig()
     {
-        $dir = sys_get_temp_dir().'/cache-test';
-        $file = $dir.'/cache.file';
+        $dir = sys_get_temp_dir() . '/cache-test';
+        $file = $dir . '/cache.file';
 
         $cache = new Cache([
             Cache::CONFIG_CACHE_ENABLED => true,
@@ -222,8 +218,8 @@ class CacheTest extends TestCase
 
     public function testInvalidateCache()
     {
-        $dir = sys_get_temp_dir().'/cache-test';
-        $file = $dir.'/cache.file';
+        $dir = sys_get_temp_dir() . '/cache-test';
+        $file = $dir . '/cache.file';
 
         @unlink($file);
         @rmdir($dir);
@@ -241,8 +237,8 @@ class CacheTest extends TestCase
 
     public function testPopulateCollection()
     {
-        $dir = sys_get_temp_dir().'/cache-test';
-        $file = $dir.'/cache.file';
+        $dir = sys_get_temp_dir() . '/cache-test';
+        $file = $dir . '/cache.file';
 
         $cache = new Cache([
             Cache::CONFIG_CACHE_ENABLED => true,

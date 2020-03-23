@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace WShafer\Expressive\Symfony\Router;
+namespace WShafer\Mezzio\Symfony\Router;
 
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RouteCollection;
-use WShafer\Expressive\Symfony\Router\Cache\Cache;
+use WShafer\Mezzio\Symfony\Router\Cache\Cache;
 
 class SymfonyRouteRouterFactory
 {
-    public function __invoke(ContainerInterface $container) : SymfonyRouteRouter
+    public function __invoke(ContainerInterface $container): SymfonyRouteRouter
     {
         $urlMatcher = $container->get(UrlMatcher::class);
 

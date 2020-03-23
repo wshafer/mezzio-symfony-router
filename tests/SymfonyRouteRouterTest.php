@@ -1,7 +1,9 @@
 <?php
 
-namespace WShafer\Expressive\Symfony\Router\Test;
+namespace WShafer\Mezzio\Symfony\Router\Test;
 
+use Mezzio\Router\Route;
+use Mezzio\Router\RouteResult;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
@@ -11,10 +13,8 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RouteCollection;
-use WShafer\Expressive\Symfony\Router\Cache\Cache;
-use WShafer\Expressive\Symfony\Router\SymfonyRouteRouter;
-use Zend\Expressive\Router\Route;
-use Zend\Expressive\Router\RouteResult;
+use WShafer\Mezzio\Symfony\Router\Cache\Cache;
+use WShafer\Mezzio\Symfony\Router\SymfonyRouteRouter;
 
 class SymfonyRouteRouterTest extends TestCase
 {
@@ -33,7 +33,7 @@ class SymfonyRouteRouterTest extends TestCase
     /** @var SymfonyRouteRouter */
     protected $router;
 
-    public function setup()
+    protected function setup(): void
     {
         $this->mockRouteCollection = $this->getMockBuilder(RouteCollection::class)
             ->disableOriginalConstructor()
@@ -103,16 +103,13 @@ class SymfonyRouteRouterTest extends TestCase
             ->with(
                 $this->equalTo('home'),
                 $this->isInstanceOf(\Symfony\Component\Routing\Route::class)
-            )->willReturn(true);
+            );
 
         $this->router->addRoute($mockRoute);
     }
 
     public function testMatchWithCachedRouteNoMatchedZendRoute()
     {
-        /** @var MockObject|Route $mockRoute */
-        $mockRoute = $this->createMock(Route::class);
-
         $mockRequest = $this->createMock(ServerRequestInterface::class);
         $mockUri = $this->createMock(UriInterface::class);
 
