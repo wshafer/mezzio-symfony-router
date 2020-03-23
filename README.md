@@ -1,8 +1,8 @@
 
 # Symfony Route Integration for Mezzio
 
-[![Build Status](https://travis-ci.org/wshafer/expressive-symfony-router.svg?branch=master)](https://travis-ci.org/wshafer/expressive-symfony-router)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/wshafer/expressive-symfony-router/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/wshafer/expressive-symfony-router/?branch=master)
+[![Build Status](https://travis-ci.org/wshafer/mezzio-symfony-router.svg?branch=master)](https://travis-ci.org/wshafer/mezzio-symfony-router)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/wshafer/mezzio-symfony-router/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/wshafer/mezzio-symfony-router/?branch=master)
 [![codecov](https://codecov.io/gh/wshafer/mezzio-symfony-router/branch/master/graph/badge.svg)](https://codecov.io/gh/wshafer/mezzio-symfony-router)
 
 Provides [Symfony Route](https://symfony.com/doc/current/routing.html) integration for
@@ -13,15 +13,14 @@ Provides [Symfony Route](https://symfony.com/doc/current/routing.html) integrati
 Install this library using composer:
 
 ```bash
-$ composer require symfony/routing:dev-master
-$ composer require wshafer/expressive-symfony-router:dev-master
+$ composer require wshafer/mezzio-symfony-router:dev-master
 ```
 
 ## Documentation
 
 ### Configuration
 
-To enable this router using the Expressive Skeleton, make sure to add
+To enable this router using the Mezzio Skeleton, make sure to add
 `WShafer\Mezzio\Symfony\Router\ConfigProvider::class` to your `ConfigAggregator`
 located in `config/config.php`.  In addition you'll want to remove
 your current router's config provider that was installed during setup.
