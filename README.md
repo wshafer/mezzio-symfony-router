@@ -13,15 +13,15 @@ Provides [Symfony Route](https://symfony.com/doc/current/routing.html) integrati
 Install this library using composer:
 
 ```bash
-$ composer require wshafer/mezzio-symfony-router:dev-master
+$ composer require wshafer/mezzio-symfony-router
 ```
 
 ## Documentation
 
 ### Configuration
 
-To enable this router using the Mezzio Skeleton, make sure to add
-`WShafer\Mezzio\Symfony\Router\ConfigProvider::class` to your `ConfigAggregator`
+To enable this router using the Mezzio Skeleton, make sure that
+`WShafer\Mezzio\Symfony\Router\ConfigProvider::class` was added to your `ConfigAggregator`
 located in `config/config.php`.  In addition you'll want to remove
 your current router's config provider that was installed during setup.
 
