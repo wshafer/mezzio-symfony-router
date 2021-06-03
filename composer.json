@@ -33,7 +33,7 @@
         }
     },
     "extra": {
-        "zf": {
+        "laminas": {
             "config-provider": "WShafer\\Mezzio\\Symfony\\Router\\ConfigProvider"
         }
     }
